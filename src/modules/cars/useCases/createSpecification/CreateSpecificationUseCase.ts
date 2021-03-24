@@ -12,7 +12,7 @@ class CreateSpecificationUseCase {
   execute({ name, description }: IRequest): void {
     // eslint-disable-next-line prettier/prettier
     const specificationAlreadyExists = this.specificationsRepository.findBYName(name);
-
+    
     if (specificationAlreadyExists) {
       throw new Error('Specification already exists');
     }
