@@ -1,45 +1,49 @@
-import { Category } from '../../model/Category';
+import { getRepository, Repository } from 'typeorm';
+import { Category } from '../../entities/Category';
 import {
   ICategoriesRepository,
   ICreateCategoryDTO
 } from '../ICategoriesRepository';
 
 class CategoriesRepository implements ICategoriesRepository {
-  private categories: Category[];
+  private repository: Repository<Category>;
 
-  private static INSTANCE: CategoriesRepository;
+  // private static INSTANCE: CategoriesRepository;
 
-  private constructor() {
-    this.categories = [];
+  // estava "private" na abordagem anterior
+  constructor() {
+    this.repository = getRepository(Category);
   }
 
-  public static getInstance(): CategoriesRepository {
-    if (!CategoriesRepository.INSTANCE) {
-      CategoriesRepository.INSTANCE = new CategoriesRepository();
-    }
+  // public static getInstance(): CategoriesRepository {
+  //   if (!CategoriesRepository.INSTANCE) {
+  //     CategoriesRepository.INSTANCE = new CategoriesRepository();
+  //   }
 
-    return CategoriesRepository.INSTANCE;
-  }
+  //   return CategoriesRepository.INSTANCE;
+  // }
 
-  create({ name, description }: ICreateCategoryDTO): void {
-    const category = new Category();
-
-    Object.assign(category, {
-      name,
+  async create({ name, description }: ICreateCategoryDTO): Promise<void> {
+    // INSERT INTO categories (description, name) VALUES (description, name )
+    const category = this.repository.create({
       description,
-      createdAt: new Date()
+      name
     });
 
-    this.categories.push(category);
+    await this.repository.save(category);
   }
 
-  list(): Category[] {
-    return this.categories;
+  async list(): Promise<Category[]> {
+    // SELECT * FROM categories 
+    const categories = await this.repository.find();
+    
+    return categories;
   }
 
-  findByName(name: string): Category {
-    // eslint-disable-next-line no-shadow
-    const category = this.categories.find(category => category.name === name);
+  async findByName(name: string): Promise<Category> {
+    // SELECT * FROM categories WHERE name = "name" LIMIT 1
+    const category = await this.repository.findOne({ name });
+
     return category;
   }
 }

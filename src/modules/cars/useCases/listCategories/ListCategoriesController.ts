@@ -5,7 +5,7 @@ class ListCategoriesController {
   // eslint-disable-next-line no-useless-constructor
   constructor(private listCategoriesUseCase: ListCategoriesUseCase) {}
 
-  handle(req: Request, res: Response): Response {
+   handle(req: Request, res: Response): Response {
     const allCategories = this.listCategoriesUseCase.execute();
 
     return res.json(allCategories);
