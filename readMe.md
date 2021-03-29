@@ -18,4 +18,5 @@ Em desenvolvimento
 - TypeScript
 - Node (express)
 - Postgres
+- TypeORM
 - Docker
