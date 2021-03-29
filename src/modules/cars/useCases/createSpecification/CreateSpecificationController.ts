@@ -1,18 +1,18 @@
 import { Request, Response } from 'express';
+import { container } from 'tsyringe';
 import { CreateSpecificationUseCase } from './CreateSpecificationUseCase';
 
-class CreateSpecificationController {
-  // eslint-disable-next-line no-useless-constructor
-  constructor(private createSpecificationUseCase: CreateSpecificationUseCase) {}
+class CreateSpecificationController {  
 
-  handle(req: Request, res: Response): Response {
+  async handle(req: Request, res: Response): Promise<Response> {
     const { name, description } = req.body;
 
-    this.createSpecificationUseCase.execute({ name, description });
+    const createSpecificationUseCase = container.resolve(CreateSpecificationUseCase);
+
+    await createSpecificationUseCase.execute({ name, description });
 
     return res.status(201).send('Specification created');
   }
 }
 
-// eslint-disable-next-line import/prefer-default-export
 export { CreateSpecificationController };

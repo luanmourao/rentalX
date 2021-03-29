@@ -1,14 +1,14 @@
-import { CategoriesRepository } from '../../repositories/implementations/CategoriesRepository';
-import { ListCategoriesController } from './ListCategoriesController';
-import { ListCategoriesUseCase } from './ListCategoriesUseCase';
+// import { CategoriesRepository } from '../../repositories/implementations/CategoriesRepository';
+// import { ListCategoriesController } from './ListCategoriesController';
+// import { ListCategoriesUseCase } from './ListCategoriesUseCase';
 
-const categoriesRepository = null;
+// const categoriesRepository = null;
 
-const listCategoriesUseCase = new ListCategoriesUseCase(categoriesRepository);
+// const listCategoriesUseCase = new ListCategoriesUseCase(categoriesRepository);
 
-const listCategoriesController = new ListCategoriesController(
-  listCategoriesUseCase
-);
+// const listCategoriesController = new ListCategoriesController(
+//   listCategoriesUseCase
+// );
 
-// eslint-disable-next-line import/prefer-default-export
-export { listCategoriesController };
+// // eslint-disable-next-line import/prefer-default-export
+// export { listCategoriesController };
