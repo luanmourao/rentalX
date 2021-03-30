@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "RentalX Documentation",
-    "description": "This is an API for a rental car company",
+    "description": "This is an API for a car rental company",
     "version": "1.0.0",
     "contact": {
       "email": "dani@rocketseat.com.br"
