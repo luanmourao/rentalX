@@ -12,7 +12,7 @@ services:
       - POSTGRES_PASSWORD=ignite
       - POSTGRES_DB=rentalxDB
     volumes: 
-      - pgdata:/data/postgres 
+      - pgdata:/data/postgres
   app:
     build: .
     container_name: rentx
