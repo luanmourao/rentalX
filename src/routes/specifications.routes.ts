@@ -6,6 +6,7 @@ const specificationsRoutes = Router();
 
 const createSpecificationController = new CreateSpecificationController();
 
+// middleware que torna a rota uma rota exclusiva para o usuário autenticado
 specificationsRoutes.use(ensureAuthenticated);
 specificationsRoutes.post('/', createSpecificationController.handle);
 
