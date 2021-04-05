@@ -11,5 +11,4 @@ interface ICategoriesRepository {
   create({ name, description }: ICreateCategoryDTO): Promise<void>;
 }
 
-// eslint-disable-next-line import/prefer-default-export
 export { ICategoriesRepository, ICreateCategoryDTO };
