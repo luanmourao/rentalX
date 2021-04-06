@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
-import { AppError } from "../errors/AppError";
-import { UsersRepository } from "../modules/accounts/repositories/implementations/UsersRepository";
+import { AppError } from "../../../errors/AppError";
+import { UsersRepository } from "../../../../modules/accounts/infra/typeorm/repositories/UsersRepository";
 
 // interface para forçar o método verify a retornar um objeto do tipo IPayload e então possamos desestruturar a propriedade sub
 interface IPayload {
