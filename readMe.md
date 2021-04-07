@@ -1,4 +1,4 @@
-![landingPage](diagrama.png)
+![landingPage](diagrama2.png)
 </br>
 </br>
 
@@ -9,18 +9,29 @@ API para uma plataforma de aluguel de carros
 **Modelo de negócio** </br>
 Login, cadastro de veículos, categorias, especificações, upload de arquivo (documentos e imagens), usuários, registros de aluguéis etc.
 
-**Especificações**</br>
+**Status** </br>
+Em desenvolvimento 
+</br>
+</br>
+
+**Tecnologias**</br>
+- TypeScript
+- Node (express)
+- Postgres
+- TypeORM
+- Docker
+- Jest e Supertest (testes automatizados)</br>
+
+**-------------------Especificações-----------------**</br>
 # Cadastro de Veículos
 **RF**</br>
-- Deve ser possível cadastrar um novo veículo;
-- Deve ser possível listar todas as categorias
+- Deve ser possível cadastrar um novo veículo
 </br>
 
 **RN**</br>
 - Não deve ser possível cadastrar um veículo com uma placa já existente;
-- Não deve ser possível alterar a placa de um veículo já cadastrado;
-- O veículo deve ser cadastrado, por padrão, com disponibilidade; 
-- O usuário responsável pelo cadastro deve ser um usuário-administrador
+- O veículo deve ser cadastrado, por padrão, com disponibilidade para aluguel; 
+- O usuário responsável pelo cadastro deve ser um usuário-administrador*
 </br>
 
 # Listagem de Veículos
@@ -73,15 +84,4 @@ Login, cadastro de veículos, categorias, especificações, upload de arquivo (d
 - Não deve ser possível cadastrar um novo aluguel caso já exista um aluguel em aberto para o mesmo usuário;
 - Não deve ser possível cadastrar um novo aluguel caso já exista um aluguel em aberto para o mesmo veículo;
 
-**Status** </br>
-Em desenvolvimento 
-</br>
-</br>
 
-**Tecnologias**</br>
-- TypeScript
-- Node (express)
-- Postgres
-- TypeORM
-- Docker
-- Jest e Supertest (testes automatizados)
