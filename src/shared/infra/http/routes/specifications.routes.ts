@@ -1,13 +1,12 @@
 import { Router } from 'express';
 import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
 import { CreateSpecificationController } from '../../../../modules/cars/useCases/createSpecification/CreateSpecificationController';
+import { ensureAdminUser } from '../middlewares/ensureAdminUser';
 
 const specificationsRoutes = Router();
 
 const createSpecificationController = new CreateSpecificationController();
 
-// middleware que torna a rota uma rota exclusiva para o usuário autenticado
-specificationsRoutes.use(ensureAuthenticated);
-specificationsRoutes.post('/', createSpecificationController.handle);
+specificationsRoutes.post('/', ensureAuthenticated, ensureAdminUser, createSpecificationController.handle);
 
 export { specificationsRoutes };
