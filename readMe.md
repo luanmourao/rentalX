@@ -16,13 +16,13 @@ Em desenvolvimento
 
 **Tecnologias**</br>
 - TypeScript
-- Node (express)
+- NodeJS (express)
 - Postgres
 - TypeORM
 - Docker
 - Jest e Supertest (testes automatizados)</br>
 
-**----------------------------------------Especificações----------------------------------------**</br>
+**--------------------------------------------------Especificações--------------------------------------------------**</br>
 # Cadastro de Veículos
 **RF**</br>
 - Deve ser possível cadastrar um novo veículo
@@ -49,8 +49,6 @@ Em desenvolvimento
 # Cadastro de Especificação de Veículos
 **RF**</br>
 - Deve ser posssível cadastrar uma especificação para um veículo;
-- Deve ser possível listar todas as especificações; 
-- Deve ser possível listar todos os carros
 </br>
 
 **RN**</br>
