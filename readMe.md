@@ -22,7 +22,7 @@ Em desenvolvimento
 - Docker
 - Jest e Supertest (testes automatizados)</br>
 
-**--------------------------------------------------Especificações--------------------------------------------------**</br>
+**-------------------------------------------------Especificações-------------------------------------------------**</br>
 # Cadastro de Veículos
 **RF**</br>
 - Deve ser possível cadastrar um novo veículo
@@ -59,8 +59,7 @@ Em desenvolvimento
 
 # Cadastro de Imagens de Veículos 
 **RF**</br>
-- Deve ser possível cadastrar a imagem do veículo;
-- Deve ser possível listar todos os veículos
+- Deve ser possível cadastrar a imagem do veículo
 </br>
 
 **RNF**</br>
