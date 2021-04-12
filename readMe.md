@@ -22,7 +22,7 @@ Em desenvolvimento
 - Docker
 - Jest e Supertest (testes automatizados)</br>
 
-**-------------------------------------------------Especificações-------------------------------------------------**</br>
+**------------------------------------------------ Especificações -----------------------------------------------**</br>
 # Cadastro de Veículos
 **RF**</br>
 - Deve ser possível cadastrar um novo veículo
@@ -79,6 +79,6 @@ Em desenvolvimento
 **RN**</br>
 - O aluguel deve ter duração mínima de 24 horas;
 - Não deve ser possível cadastrar um novo aluguel caso já exista um aluguel em aberto para o mesmo usuário;
-- Não deve ser possível cadastrar um novo aluguel caso já exista um aluguel em aberto para o mesmo veículo;
+- Não deve ser possível cadastrar um novo aluguel caso já exista um aluguel em aberto para o mesmo veículo
 
 
