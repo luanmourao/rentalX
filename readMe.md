@@ -79,6 +79,7 @@ Em desenvolvimento
 **RN**</br>
 - O aluguel deve ter duração mínima de 24 horas;
 - Não deve ser possível cadastrar um novo aluguel caso já exista um aluguel em aberto para o mesmo usuário;
-- Não deve ser possível cadastrar um novo aluguel caso já exista um aluguel em aberto para o mesmo veículo
+- Não deve ser possível cadastrar um novo aluguel caso já exista um aluguel em aberto para o mesmo veículo;
+- O usuário deve estar autenticado para registrar um aluguel
 
 
