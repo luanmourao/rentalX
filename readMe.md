@@ -80,6 +80,21 @@ Em desenvolvimento
 - O aluguel deve ter duração mínima de 24 horas;
 - Não deve ser possível cadastrar um novo aluguel caso já exista um aluguel em aberto para o mesmo usuário;
 - Não deve ser possível cadastrar um novo aluguel caso já exista um aluguel em aberto para o mesmo veículo;
-- O usuário deve estar autenticado para registrar um aluguel
+- O usuário deve estar autenticado para registrar um aluguel;
+- Ao realizar o cadastro de aluguel, a propriedade 'available' do veículo deve ser alterada para 'false'
+</br>
 
+# Devolução de Veículos 
+**RF**</br>
+- Deve ser possível realizar a devolução de um veículo alugado
+</br>
+
+**RN**</br>
+- Para efetivar a devolução, o usuário precisa estar autenticado
+- Se o veículo for devolvido em menos de 24 horas, deverá ser cobrada a diária completa;
+- Ao efetivar a devolução, o veículo deverá ser liberado para outro aluguel;
+- Ao efetivar a devolução, o usuário deverá ser liberado para outro aluguel;
+- Ao efetivar a devolução, deverá ser calculado o total do aluguel;
+- Caso o horário de devolução seja superior ao horário previsto de entrega, deverá ser cobrada multa proporcional;
+- Caso haja multa, esta deverá ser somada ao total do aluguel.
 
