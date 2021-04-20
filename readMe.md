@@ -96,5 +96,13 @@ Em desenvolvimento
 - Ao efetivar a devolução, o usuário deverá ser liberado para outro aluguel;
 - Ao efetivar a devolução, deverá ser calculado o total do aluguel;
 - Caso o horário de devolução seja superior ao horário previsto de entrega, deverá ser cobrada multa proporcional;
-- Caso haja multa, esta deverá ser somada ao total do aluguel.
+- Caso haja multa, esta deverá ser somada ao total do aluguel
+</br>
 
+# Listagem de aluguéis para usuário 
+**RF**</br>
+- Deve ser possível realizar a busca de todos os aluguéis realizados pelo usuário
+</br>
+
+**RN**</br>
+- Para efetivar a busca, o usuário precisa estar autenticado
