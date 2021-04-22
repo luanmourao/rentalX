@@ -12,7 +12,7 @@ describe("Create Category", () => {
     createCategoryUseCase = new CreateCategoryUseCase(categoriesRepositoryInMemory);
   });
 
-  it("Should be able to create a new category", async () => {
+  it("should be able to create a new category", async () => {
     const category = {
       name: "Category test",
       description: "Category description test"
@@ -28,24 +28,24 @@ describe("Create Category", () => {
     expect(createdCategory).toHaveProperty("id");
   });
 
-  it("Should not be able to create a new category with the same name", async () => {
-    expect(async () => {
-      const category = {
-        name: "Category test",
-        description: "Category description test"
-      };
-  
-      await createCategoryUseCase.execute({
-        name: category.name,
-        description: category.description
-      });
-  
-      // funciona mesmo comentando essa segunda chamada ao execute. Por que?
-      await createCategoryUseCase.execute({
-        name: category.name,
-        description: category.description
-      });
-    }).rejects.toBeInstanceOf(AppError);
+  it("should not be able to create a new category with the same name", async () => {
+    const category = {
+      name: "Category test",
+      description: "Category description test"
+    };
+
+    await createCategoryUseCase.execute({
+      name: category.name,
+      description: category.description
+    });
     
+    await expect(
+      // funciona mesmo comentando essa segunda chamada ao execute. Por que?
+      createCategoryUseCase.execute({
+        name: category.name,
+        description: category.description
+      })
+    ).rejects.toEqual(new AppError('This category already exists'));
   });  
+
 });

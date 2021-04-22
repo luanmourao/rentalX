@@ -34,32 +34,32 @@ describe("Authenticate an User", () => {
     expect(result).toHaveProperty("token")
   });
 
-  it("Should not be able to authenticate a non existing user", () => {
-    expect(async () => {
-      await authenticateUserUseCase.execute({
+  it("Should not be able to authenticate a non existing user", async () => {
+    await expect(
+      authenticateUserUseCase.execute({
         email: "false@test.com",
         password: "1234"
-      });
-    }).rejects.toBeInstanceOf(AppError);
+      })
+    ).rejects.toEqual(new AppError('E-mail or password incorrect!'));
   });
 
   // este teste está passando mesmo com uma senha correta, de modo que estaria retornando um erro do tipo AppError mesmo quando nosso usuário envia a senha correta? Por que?
-  it("Should not be able to authenticate an user with incorrect password", () => {
-    expect(async () => {
-      const user: ICreateUserDTO = { 
-        driver_license: "000123",
-        email: "user@test.com",
-        password: "1234",
-        name: "User test"
-      }; 
-  
-      await createUserUseCase.execute(user);
+  it("Should not be able to authenticate an user with incorrect password", async () => {
+    const user: ICreateUserDTO = { 
+      driver_license: "000123",
+      email: "user@test.com",
+      password: "1234",
+      name: "User test"
+    }; 
 
-      await authenticateUserUseCase.execute({
+    await createUserUseCase.execute(user);
+    
+    await expect(
+      authenticateUserUseCase.execute({
         email: user.email,
         password: "incorrectPassword"
-      });
-    }).rejects.toBeInstanceOf(AppError);
+      })
+    ).rejects.toEqual(new AppError('E-mail or password incorrect!'));
   })
 
 });
