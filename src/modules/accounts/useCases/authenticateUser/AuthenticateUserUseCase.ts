@@ -50,7 +50,6 @@ class AuthenticateUserUseCase {
       throw new AppError("E-mail or password incorrect!");
     }
 
-    // gerar o JWT
     const token = sign({}, secret_token, {
       subject: user.id,
       expiresIn: expires_in_token

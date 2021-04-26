@@ -2,6 +2,8 @@ import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
 import { AppError } from "../../../errors/AppError";
 import { UsersRepository } from "../../../../modules/accounts/infra/typeorm/repositories/UsersRepository";
+import { UsersTokensRepository } from "../../../../modules/accounts/infra/typeorm/repositories/UsersTokensRepository";
+import auth from "../../../../config/auth";
 
 // interface para forçar o método verify a retornar um objeto do tipo IPayload e então possamos desestruturar a propriedade sub
 interface IPayload {
@@ -11,6 +13,8 @@ interface IPayload {
 export async function ensureAuthenticated(req: Request, res: Response, next: NextFunction) {
   // pegar o token que está vindo pelo header na propriedade "authorization"
   const authHeader = req.headers.authorization;
+
+  const usersTokensRepository = new UsersTokensRepository();
 
   // verificar se "authorization" veio vazio
   if (!authHeader) {
@@ -28,11 +32,9 @@ export async function ensureAuthenticated(req: Request, res: Response, next: Nex
     // em caso de sucesso, queremos pegar a propriedade "sub", onde consta o id do usuário cujo token foi validado
     // este usuário deve portanto ser autenticado para as rotas que exigem tal autenticação
     // se a verificação falhar, uma exceção é lançada
-    const { sub: user_id } = verify(token, "2a0f30d1f57a06d3c490a51cbe23c2be") as IPayload;
+    const { sub: user_id } = verify(token, auth.secret_refresh_token) as IPayload;
     
-    const usersRepository = new UsersRepository();
-
-    const user = await usersRepository.findById(user_id);
+    const user = await usersTokensRepository.findByUserIdAndRefreshToken(user_id, token);
 
     if (!user) {
       throw new AppError("User does not exists", 401);
@@ -47,3 +49,5 @@ export async function ensureAuthenticated(req: Request, res: Response, next: Nex
     throw new AppError("Invalid token", 401);
   }
 }
+
+
