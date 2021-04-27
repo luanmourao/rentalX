@@ -22,7 +22,6 @@ class RefreshTokenUseCase {
 
   async execute(token: string): Promise<string> {
     const { sub, email } = verify(token, auth.secret_refresh_token) as IPayload;
-    console.log(verify(token, auth.secret_refresh_token) as IPayload);
 
     const user_id = sub;
 

@@ -106,3 +106,15 @@ Em desenvolvimento
 
 **RN**</br>
 - Para efetivar a busca, o usuário precisa estar autenticado
+</br>
+
+# Recuperação de Senha
+**RF**</br>
+- Deve ser possível que o usuário recupere sua senha informando o seu e-mail;
+- O usuário deve receber um e-mail com o passo a passo e o link para a recuperação da senha;
+- O usuário deve conseguir inserir uma nova senha
+</br>
+
+**RN**</br>
+- O usuário precisa, necessariamente, informar uma senha nova;
+- O link enviado para a recuperação da senha deve expirar em 3 horas
