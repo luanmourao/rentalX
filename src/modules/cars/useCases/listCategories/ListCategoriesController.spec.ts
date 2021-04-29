@@ -35,18 +35,16 @@ describe("List Categories", () => {
       password: "admin"
     });
 
-    const { token } = responseToken.body;
+    const { refresh_token } = responseToken.body;
 
     await request(app).post("/categories").send({
       name: "Category Supertest Name",
       description: "Category Supertest Description"
     }).set({
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${refresh_token}`
     });
 
     const response = await request(app).get("/categories");
-
-    console.log(response.body);
 
     expect(response.status).toBe(200);
     expect(response.body.length).toBe(1);

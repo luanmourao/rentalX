@@ -1,18 +1,24 @@
+import { DayjsDateProvider } from "../../../../shared/container/providers/dateProvider/implementations/DayjsDateProvider";
 import { AppError } from "../../../../shared/errors/AppError";
 import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
-import { UsersARepositoryInMemory } from "../../repositories/in-memory/UsersRepositoryInMemory";
+import { UsersRepositoryInMemory } from "../../repositories/in-memory/UsersRepositoryInMemory";
+import { UsersTokensRepositoryInMemory } from "../../repositories/in-memory/UsersTokensRepositoryInMemory";
 import { CreateUserUseCase } from "../createUser/CreateUserUseCase";
 import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase";
 
 let authenticateUserUseCase: AuthenticateUserUseCase;
-let usersRepositoryInMemory: UsersARepositoryInMemory;
+let usersRepositoryInMemory: UsersRepositoryInMemory;
+let usersTokensRepositoryInMemory: UsersTokensRepositoryInMemory;
+let dateProvider: DayjsDateProvider;
 let createUserUseCase: CreateUserUseCase;
 
 describe("Authenticate an User", () => {
 
   beforeEach(() => {
-    usersRepositoryInMemory = new UsersARepositoryInMemory();
-    authenticateUserUseCase = new AuthenticateUserUseCase(usersRepositoryInMemory);
+    usersRepositoryInMemory = new UsersRepositoryInMemory();
+    usersTokensRepositoryInMemory = new UsersTokensRepositoryInMemory();
+    dateProvider = new DayjsDateProvider();
+    authenticateUserUseCase = new AuthenticateUserUseCase(usersRepositoryInMemory, usersTokensRepositoryInMemory, dateProvider);
     createUserUseCase = new CreateUserUseCase(usersRepositoryInMemory);
   });
 
@@ -43,7 +49,6 @@ describe("Authenticate an User", () => {
     ).rejects.toEqual(new AppError('E-mail or password incorrect!'));
   });
 
-  // este teste está passando mesmo com uma senha correta, de modo que estaria retornando um erro do tipo AppError mesmo quando nosso usuário envia a senha correta? Por que?
   it("Should not be able to authenticate an user with incorrect password", async () => {
     const user: ICreateUserDTO = { 
       driver_license: "000123",
