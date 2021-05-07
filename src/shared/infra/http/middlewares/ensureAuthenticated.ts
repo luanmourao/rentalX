@@ -14,8 +14,6 @@ export async function ensureAuthenticated(req: Request, res: Response, next: Nex
   // pegar o token que está vindo pelo header na propriedade "authorization"
   const authHeader = req.headers.authorization;
 
-  const usersTokensRepository = new UsersTokensRepository();
-
   // verificar se "authorization" veio vazio
   if (!authHeader) {
     throw new AppError("Missing token", 401);
@@ -32,13 +30,7 @@ export async function ensureAuthenticated(req: Request, res: Response, next: Nex
     // em caso de sucesso, queremos pegar a propriedade "sub", onde consta o id do usuário cujo token foi validado
     // este usuário deve portanto ser autenticado para as rotas que exigem tal autenticação
     // se a verificação falhar, uma exceção é lançada
-    const { sub: user_id } = verify(token, auth.secret_refresh_token) as IPayload;
-    
-    const user = await usersTokensRepository.findByUserIdAndRefreshToken(user_id, token);
-
-    if (!user) {
-      throw new AppError("User does not exists", 401);
-    }
+    const { sub: user_id } = verify(token, auth.secret_token) as IPayload;
 
     req.user = {
       id: user_id

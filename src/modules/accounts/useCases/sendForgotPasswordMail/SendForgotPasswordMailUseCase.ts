@@ -7,7 +7,6 @@ import { IDateProvider } from "../../../../shared/container/providers/dateProvid
 import { IMailProvider } from "../../../../shared/container/providers/mailProvider/IMailProvider";
 import { resolve } from 'path';
 
-
 @injectable()
 class SendForgotPasswordMailUseCase {
   
