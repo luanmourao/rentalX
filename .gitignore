@@ -2,3 +2,7 @@ node_modules
 .vscode
 testsCoverage
 .env
+tmp/*
+!tmp/.gitkeep
+dist
+ormconfig.json

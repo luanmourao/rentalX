@@ -1,0 +1,13 @@
+{
+  "type": "postgres",
+  "port": 5432,
+  "host": "172.18.0.2",
+  "username": "",
+  "password": "",
+  "database": "rentalxDB",
+  "entities": ["./src/modules/**/infra/typeorm/entities/**.ts"],
+  "migrations": ["./src/shared/infra/typeormDB/migrations/*.ts"],
+  "cli": {
+    "migrationsDir": "./src/shared/infra/typeormDB/migrations"
+  }
+}
