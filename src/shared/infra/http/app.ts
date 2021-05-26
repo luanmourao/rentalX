@@ -10,9 +10,12 @@ import '../../container';
 import cors from 'cors';
 import { router } from './routes';
 import { AppError } from '../../errors/AppError';
+import rateLimiter from '../http/middlewares/rateLimiter';
 
 createConnection();
 const app = express();
+
+app.use(rateLimiter);
 
 app.use(express.json());
 
@@ -24,7 +27,6 @@ app.use("/cars", express.static(`${upload.tmpFolder}/cars`));
 app.use(cors());
 app.use(router);
 
-// middleware para tratamento de exceções
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   if (err instanceof AppError) {
     return res.status(err.statusCode).json({ message: err.message });
