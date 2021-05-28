@@ -1,4 +1,3 @@
-// test
 import "reflect-metadata";
 import upload from "../../../config/upload";
 import "dotenv/config";
